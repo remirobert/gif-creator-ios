@@ -11,6 +11,7 @@
 #import "ControllerGif.h"
 #import "AppDelegate.h"
 #import "ImageCollectionController+ConfigTab.h"
+#import "QBPopupMenu.h"
 
 @interface ImageCollectionController ()
 
@@ -28,7 +29,13 @@
     self.photos = [[NSMutableArray alloc] init];
     self->indexSelected = -1;
     self.collectionView.allowsMultipleSelection = YES;
+    
     return (self);
+}
+
+- (BOOL)shouldInvalidateLayoutForBoundsChange:(CGRect)newBounds
+{
+    return YES;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -44,18 +51,6 @@
     return ([self.photos count]);
 }
 
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    ImageCell *cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:@"photo" forIndexPath:indexPath];
-
-    if (cell.isSelected == YES)
-        NSLog(@"is selected [%d]", indexPath.row);
-    else
-        NSLog(@"is deselected [%d]", indexPath.row);
-    cell.image.contentMode = UIViewContentModeScaleAspectFit;
-    cell.image.image = [self.photos objectAtIndex:indexPath.row];
-    cell.frame = CGRectMake(cell.frame.origin.x, cell.frame.origin.y, [UIScreen mainScreen].bounds.size.width / 3 - 1, [UIScreen mainScreen].bounds.size.height / 3 - 1);
-    return (cell);
-}
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     [self.photos addObject:info[UIImagePickerControllerEditedImage]];
@@ -66,28 +61,13 @@
     [picker dismissViewControllerAnimated:YES completion:NULL];
 }
 
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldHighlightItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    NSLog(@"display");
-    return (YES);
-}
-
-- (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    NSLog(@"deselected");
-    [self.collectionView reloadData];
-}
-
-
-- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    NSLog(@"selected");
-//    if (self->indexSelected == indexPath.row)
-//        self->indexSelected = -1;
-//    else
-//        self->indexSelected = indexPath.row;
-//    NSLog(@"select %d", self->indexSelected);
-    [self.collectionView reloadData];
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    ImageCell *cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:@"photo" forIndexPath:indexPath];
+    
+    cell.image.contentMode = UIViewContentModeScaleAspectFit;
+    cell.image.image = [self.photos objectAtIndex:indexPath.row];
+    cell.frame = CGRectMake(cell.frame.origin.x, cell.frame.origin.y, [UIScreen mainScreen].bounds.size.width / 3 - 1, [UIScreen mainScreen].bounds.size.width / 3 - 1);
+    return (cell);
 }
 
 - (void) addPhoto {
@@ -135,12 +115,49 @@
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@">" style:UIBarButtonItemStyleBordered target:self action:@selector(makeGif)];
 }
 
+- (BOOL) canBecomeFirstResponder
+{
+    return (YES);
+}
+
+- (void) selectCellDelete:(UITapGestureRecognizer *)sender {
+    if (sender.state == UIGestureRecognizerStateEnded)
+    {
+        CGPoint point = [sender locationInView:self.collectionView];
+        NSIndexPath *indexPath = [self.collectionView indexPathForItemAtPoint:point];
+        if (indexPath)
+        {
+            self->indexSelected = indexPath.row;
+            QBPopupMenuItem *item = [QBPopupMenuItem itemWithTitle:@"Delete" target:self action:@selector(deletePhoto)];
+            QBPopupMenuItem *item2 = [QBPopupMenuItem itemWithTitle:@"Copy" target:self action:@selector(copyPhoto)];
+            
+            QBPopupMenu *popupMenu = [[QBPopupMenu alloc] initWithItems:@[item, item2]];
+            
+            CGRect frame = ((UICollectionViewCell *)[self.collectionView cellForItemAtIndexPath:indexPath]).frame;
+            
+            [popupMenu showInView:self.view targetRect:CGRectMake(frame.origin.x, frame.origin.y + [UIScreen mainScreen].bounds.size.width / 3 - 1, frame.size.width, frame.size.height) animated:YES];
+            
+           /*
+            UIMenuItem *item = [[UIMenuItem alloc] initWithTitle:@"salut" action:nil];
+            UIMenuController *menu = [UIMenuController alloc];
+            
+            [menu setTargetRect:CGRectMake(point.x, point.y, 0, 0) inView:self.view];
+            [menu setMenuItems:@[item]];
+            [self.collectionView becomeFirstResponder];
+            [menu setMenuVisible:YES animated:YES];
+            */
+            NSLog(@"selection = %d", indexPath.row);
+        }
+    }
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    UITapGestureRecognizer *tapCell = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(selectCellDelete:)];
+    [self.view addGestureRecognizer:tapCell];
     
-    
-    self.collectionView.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height - 64);
+    self.collectionView.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height - 84);
     
     [self initconfigBar];
     [self initButtonNavigationBar];
