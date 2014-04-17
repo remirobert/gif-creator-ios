@@ -100,10 +100,10 @@
 - (void) makeGif {
     AppDelegate *de = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
-    [self.photos removeAllObjects];
     de.photos = self.photos;
     ControllerGif *gif = [[ControllerGif alloc] init];
-    [self.navigationController pushViewController:gif animated:YES];
+    [self presentViewController:gif animated:YES completion:nil];
+//    [self.navigationController pushViewController:gif animated:YES];
 }
 
 - (void) resetGif {
@@ -134,16 +134,6 @@
         if (indexPath)
         {
             self->indexSelected = indexPath.row;
-//            QBPopupMenuItem *item = [QBPopupMenuItem itemWithTitle:@"Delete" target:self action:@selector(deletePhoto)];
-//            QBPopupMenuItem *item2 = [QBPopupMenuItem itemWithTitle:@"Copy" target:self action:@selector(copyPhoto)];
-//            
-//            QBPopupMenu *popupMenu = [[QBPopupMenu alloc] initWithItems:@[item, item2]];
-//            
-//            CGRect frame = ((UICollectionViewCell *)[self.collectionView cellForItemAtIndexPath:indexPath]).frame;
-//            
-//            [popupMenu showInView:self.view targetRect:CGRectMake(frame.origin.x, frame.origin.y + [UIScreen mainScreen].bounds.size.width / 3 - 1, frame.size.width, frame.size.height) animated:YES];
-            
-           
             [self becomeFirstResponder];
             UIMenuItem *menuItem = [[UIMenuItem alloc] initWithTitle:@"Delete" action:@selector(deletePhoto)];
             UIMenuItem *menuCopy = [[UIMenuItem alloc] initWithTitle:@"Copy" action:@selector(copyPhoto)];
@@ -151,16 +141,6 @@
             [menuCont setTargetRect:CGRectMake(point.x, point.y, 0, 0) inView:self.view];
             menuCont.menuItems = [NSArray arrayWithObjects:menuItem, menuCopy, nil];
             [menuCont setMenuVisible:YES animated:YES];
-            
-            
-//            UIMenuItem *item = [[UIMenuItem alloc] initWithTitle:@"salut" action:nil];
-//            UIMenuController *menu = [UIMenuController alloc];
-//            
-//            [menu setTargetRect:CGRectMake(point.x, point.y, 0, 0) inView:self.view];
-//            [menu setMenuItems:@[item]];
-//            [self.collectionView becomeFirstResponder];
-//            [menu setMenuVisible:YES animated:YES];
-            
             NSLog(@"selection = %d", indexPath.row);
         }
     }
