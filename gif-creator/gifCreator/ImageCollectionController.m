@@ -145,6 +145,13 @@
     }
 }
 
+- (void) viewDidAppear:(BOOL)animated {
+    AppDelegate *de = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+    self.photos = de.photos;
+    [self.collectionView reloadData];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];

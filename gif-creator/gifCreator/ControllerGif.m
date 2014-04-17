@@ -10,6 +10,7 @@
 #import "ImageCollectionController.h"
 #import "AppDelegate.h"
 #import "FlatUIKit.h"
+#import "ImageCollectionController.h"
 
 @interface ControllerGif ()
 
@@ -19,20 +20,20 @@
 
 - (void) initLabel {
     UIFont *myFont          = [UIFont boldFlatFontOfSize:16];
-    UILabel *speedTile      = [[UILabel alloc] initWithFrame:CGRectMake(0, [UIScreen mainScreen].bounds.size.height / 2 - 5, [UIScreen mainScreen].bounds.size.width, 40)];
+    UILabel *speedTile      = [[UILabel alloc] initWithFrame:CGRectMake(0, ([UIScreen mainScreen].bounds.size.height) / 2 - 5 + 64, [UIScreen mainScreen].bounds.size.width, 40)];
     [speedTile setFont:myFont];
     speedTile.text          = @"speed frames";
     speedTile.textAlignment = NSTextAlignmentCenter;
     speedTile.textColor     = [UIColor whiteColor];
 
-    UILabel *more           = [[UILabel alloc] initWithFrame:CGRectMake([UIScreen mainScreen].bounds.size.width - 15 , [UIScreen mainScreen].bounds.size.height / 2 + 15, 10, 40)];
+    UILabel *more           = [[UILabel alloc] initWithFrame:CGRectMake([UIScreen mainScreen].bounds.size.width - 15, [UIScreen mainScreen].bounds.size.height / 2 + 15 + 64, 10, 40)];
     [more setFont:myFont];
     more.text               = @"+";
     more.textAlignment      = NSTextAlignmentCenter;
     more.textColor          = [UIColor whiteColor];
 
 
-    UILabel *less           = [[UILabel alloc] initWithFrame:CGRectMake(10, [UIScreen mainScreen].bounds.size.height / 2 + 15, 10, 40)];
+    UILabel *less           = [[UILabel alloc] initWithFrame:CGRectMake(10, [UIScreen mainScreen].bounds.size.height / 2 + 15 + 65, 10, 40)];
     [less setFont:myFont];
     less.text               = @"-";
     less.textAlignment      = NSTextAlignmentCenter;
@@ -41,6 +42,25 @@
     [self.view addSubview:speedTile];
     [self.view addSubview:more];
     [self.view addSubview:less];
+}
+
+- (void) editGif {
+    NSLog(@"call");
+    
+    ImageCollectionController *collectionControler = [[ImageCollectionController alloc] init];
+    
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:collectionControler];
+    
+    [navController.navigationController.navigationBar setTitleTextAttributes:
+     [NSDictionary dictionaryWithObjectsAndKeys:
+      [UIFont fontWithName:@"Lato-Black" size:21],
+      NSFontAttributeName, nil]];
+    
+    
+    navController.navigationBar.barStyle = UIBarStyleBlack;
+    navController.navigationBar.barTintColor = [UIColor colorWithRed:82.0 / 255.0 green:200.0 / 255.0 blue:109.0 / 255.0 alpha:1];
+    
+    [self presentViewController:navController animated:YES completion:nil];
 }
 
 - (void) initButtoon {
@@ -66,6 +86,8 @@
     editGif.titleLabel.font = [UIFont boldFlatFontOfSize:16];
     [editGif setTitleColor:[UIColor cloudsColor] forState:UIControlStateNormal];
     [editGif setTitleColor:[UIColor cloudsColor] forState:UIControlStateHighlighted];
+    
+    [editGif addTarget:self action:@selector(editGif) forControlEvents:UIControlEventTouchUpInside];
     
     [self.view addSubview:saveCamera];
     [self.view addSubview:editGif];
@@ -99,12 +121,12 @@
     self = [ControllerGif alloc];
     self.title = @"GIF Creator";
     self->speedInterval = 0.5;
-    self.speed = [[UISlider alloc] initWithFrame:CGRectMake(20, [UIScreen mainScreen].bounds.size.height / 2 + 10, [UIScreen mainScreen].bounds.size.width - 40, 50)];
+    self.speed = [[UISlider alloc] initWithFrame:CGRectMake(20, [UIScreen mainScreen].bounds.size.height / 2 + 10 + 64, [UIScreen mainScreen].bounds.size.width - 40, 50)];
     self.speed.minimumValue = 0.1;
     self.speed.maximumValue = 1.0;
     self.speed.value = 0.5;
     [self.speed addTarget:self action:@selector(changeSpeed) forControlEvents:UIControlEventValueChanged];
-    self.imageGif = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height / 2)];
+    self.imageGif = [[UIImageView alloc] initWithFrame:CGRectMake(0, 64, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height / 2)];
     self.imageGif.backgroundColor = [UIColor blackColor];
     self.view.backgroundColor = [UIColor colorWithRed:42.0 / 255.0 green:49.0 / 255.0 blue:55.0 / 255.0 alpha:1];
     [self.view addSubview:self.speed];
@@ -137,9 +159,17 @@
     [self displayGif];
 }
 
+- (void) initViewTitle {
+    UIView *titleView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 64)];
+    
+    titleView.backgroundColor = [UIColor colorWithRed:82.0 / 255.0 green:200.0 / 255.0 blue:109.0 / 255.0 alpha:1];
+    [self.view addSubview:titleView];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self initViewTitle];
     [self initButtoon];
     [self progressView];
     [self initLabel];
