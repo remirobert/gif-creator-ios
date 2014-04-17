@@ -16,13 +16,13 @@
 
 - (id)initWithFrame:(CGRect)frame
 {
-    self = [super initWithFrame:frame];
+    self                            = [super initWithFrame:frame];
     if (self) {
-        _image = [[UIImageView alloc] initWithFrame:[self.contentView bounds]];
-        _image.image = [UIImage imageNamed:@"addButton"];
-        [self.contentView addSubview:_image];
-        UIGestureRecognizer *touchPhoto = [[UIGestureRecognizer alloc] initWithTarget:self action:@selector(displayPhoto)];
-        [self addGestureRecognizer:touchPhoto];
+    _image                          = [[UIImageView alloc] initWithFrame:[self.contentView bounds]];
+    _image.image                    = [UIImage imageNamed:@"addButton"];
+    [self.contentView addSubview:_image];
+    UIGestureRecognizer *touchPhoto = [[UIGestureRecognizer alloc] initWithTarget:self action:@selector(displayPhoto)];
+    [self addGestureRecognizer:touchPhoto];
     }
     return self;
 }

@@ -13,10 +13,12 @@
     int indexSelected;
 }
 
-@property (nonatomic) NSMutableArray *photos;
+@property (nonatomic) NSMutableArray                  *photos;
 
 - (void) addPhoto;
 - (void) deletePhoto;
 - (void) copyPhoto;
+- (void) makeGif;
+- (void) resetGif;
 
 @end

@@ -18,39 +18,39 @@
 @implementation ControllerGif
 
 - (void) initLabel {
-    UIFont *myFont = [UIFont boldFlatFontOfSize:16];
-    UILabel *speedTile = [[UILabel alloc] initWithFrame:CGRectMake(0, [UIScreen mainScreen].bounds.size.height / 2 - 5, [UIScreen mainScreen].bounds.size.width, 40)];
+    UIFont *myFont          = [UIFont boldFlatFontOfSize:16];
+    UILabel *speedTile      = [[UILabel alloc] initWithFrame:CGRectMake(0, [UIScreen mainScreen].bounds.size.height / 2 - 5, [UIScreen mainScreen].bounds.size.width, 40)];
     [speedTile setFont:myFont];
-    speedTile.text = @"speed frames";
+    speedTile.text          = @"speed frames";
     speedTile.textAlignment = NSTextAlignmentCenter;
-    speedTile.textColor = [UIColor whiteColor];
-    
-    UILabel *more = [[UILabel alloc] initWithFrame:CGRectMake([UIScreen mainScreen].bounds.size.width - 15 , [UIScreen mainScreen].bounds.size.height / 2 + 15, 10, 40)];
+    speedTile.textColor     = [UIColor whiteColor];
+
+    UILabel *more           = [[UILabel alloc] initWithFrame:CGRectMake([UIScreen mainScreen].bounds.size.width - 15 , [UIScreen mainScreen].bounds.size.height / 2 + 15, 10, 40)];
     [more setFont:myFont];
-    more.text = @"+";
-    more.textAlignment = NSTextAlignmentCenter;
-    more.textColor = [UIColor whiteColor];
-    
-    
-    UILabel *less = [[UILabel alloc] initWithFrame:CGRectMake(10, [UIScreen mainScreen].bounds.size.height / 2 + 15, 10, 40)];
+    more.text               = @"+";
+    more.textAlignment      = NSTextAlignmentCenter;
+    more.textColor          = [UIColor whiteColor];
+
+
+    UILabel *less           = [[UILabel alloc] initWithFrame:CGRectMake(10, [UIScreen mainScreen].bounds.size.height / 2 + 15, 10, 40)];
     [less setFont:myFont];
-    less.text = @"-";
-    less.textAlignment = NSTextAlignmentCenter;
-    less.textColor = [UIColor whiteColor];
-    
+    less.text               = @"-";
+    less.textAlignment      = NSTextAlignmentCenter;
+    less.textColor          = [UIColor whiteColor];
+
     [self.view addSubview:speedTile];
     [self.view addSubview:more];
     [self.view addSubview:less];
 }
 
 - (void) initButtoon {
-    FUIButton *saveCamera = [[FUIButton alloc] initWithFrame:CGRectMake([UIScreen mainScreen].bounds.size.width / 4, [UIScreen mainScreen].bounds.size.height - ([UIScreen mainScreen].bounds.size.height / 3), [UIScreen mainScreen].bounds.size.width / 2, (([UIScreen mainScreen].bounds.size.height / 2) - 114) / 2)];
-    
-    saveCamera.buttonColor = [UIColor orangeColor];
-    saveCamera.shadowColor = [UIColor redColor];
-    saveCamera.shadowHeight = 3.0f;
-    saveCamera.cornerRadius = 6.0f;
-    
+    FUIButton *saveCamera      = [[FUIButton alloc] initWithFrame:CGRectMake([UIScreen mainScreen].bounds.size.width / 4, [UIScreen mainScreen].bounds.size.height - ([UIScreen mainScreen].bounds.size.height / 3), [UIScreen mainScreen].bounds.size.width / 2, (([UIScreen mainScreen].bounds.size.height / 2) - 114) / 2)];
+
+    saveCamera.buttonColor     = [UIColor orangeColor];
+    saveCamera.shadowColor     = [UIColor redColor];
+    saveCamera.shadowHeight    = 3.0f;
+    saveCamera.cornerRadius    = 6.0f;
+
     [saveCamera setTitle:@"save photo" forState:UIControlStateNormal];
     saveCamera.titleLabel.font = [UIFont boldFlatFontOfSize:16];
     [saveCamera setTitleColor:[UIColor cloudsColor] forState:UIControlStateNormal];

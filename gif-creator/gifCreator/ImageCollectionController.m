@@ -20,16 +20,16 @@
 @implementation ImageCollectionController
 
 - (instancetype) init {
-    UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
-    
-    layout.itemSize = CGSizeMake([UIScreen mainScreen].bounds.size.width / 3 - 1, [UIScreen mainScreen].bounds.size.width / 3 - 1);
-    layout.minimumInteritemSpacing = 1.0;
-    layout.minimumLineSpacing = 2.0;
-    self = [super initWithCollectionViewLayout:layout];
-    self.photos = [[NSMutableArray alloc] init];
-    self->indexSelected = -1;
+    UICollectionViewFlowLayout *layout          = [[UICollectionViewFlowLayout alloc] init];
+
+    layout.itemSize                             = CGSizeMake([UIScreen mainScreen].bounds.size.width / 3 - 1, [UIScreen mainScreen].bounds.size.width / 3 - 1);
+    layout.minimumInteritemSpacing              = 1.0;
+    layout.minimumLineSpacing                   = 2.0;
+    self                                        = [super initWithCollectionViewLayout:layout];
+    self.photos                                 = [[NSMutableArray alloc] init];
+    self->indexSelected                         = -1;
     self.collectionView.allowsMultipleSelection = YES;
-    
+
     return (self);
 }
 
@@ -88,6 +88,7 @@
 }
 
 - (void) deletePhoto {
+    NSLog(@"delete call");
     if (self->indexSelected == -1)
         return ;
     NSLog(@"index item = %d", self->indexSelected);
@@ -109,15 +110,18 @@
     [self.collectionView reloadData];
 }
 
-- (void) initButtonNavigationBar {
-    self.title = @"GIF Creator";
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"X" style:UIBarButtonItemStyleBordered target:self action:@selector(resetGif)];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@">" style:UIBarButtonItemStyleBordered target:self action:@selector(makeGif)];
-}
-
 - (BOOL) canBecomeFirstResponder
 {
     return (YES);
+}
+
+- (BOOL)canPerformAction: (SEL)action withSender: (id)sender {
+    NSLog(@"call here");
+    if (action == @selector(deletePhoto))
+        return (YES);
+    if (action == @selector(copyPhoto))
+        return (YES);
+    return (NO);
 }
 
 - (void) selectCellDelete:(UITapGestureRecognizer *)sender {
@@ -128,24 +132,33 @@
         if (indexPath)
         {
             self->indexSelected = indexPath.row;
-            QBPopupMenuItem *item = [QBPopupMenuItem itemWithTitle:@"Delete" target:self action:@selector(deletePhoto)];
-            QBPopupMenuItem *item2 = [QBPopupMenuItem itemWithTitle:@"Copy" target:self action:@selector(copyPhoto)];
+//            QBPopupMenuItem *item = [QBPopupMenuItem itemWithTitle:@"Delete" target:self action:@selector(deletePhoto)];
+//            QBPopupMenuItem *item2 = [QBPopupMenuItem itemWithTitle:@"Copy" target:self action:@selector(copyPhoto)];
+//            
+//            QBPopupMenu *popupMenu = [[QBPopupMenu alloc] initWithItems:@[item, item2]];
+//            
+//            CGRect frame = ((UICollectionViewCell *)[self.collectionView cellForItemAtIndexPath:indexPath]).frame;
+//            
+//            [popupMenu showInView:self.view targetRect:CGRectMake(frame.origin.x, frame.origin.y + [UIScreen mainScreen].bounds.size.width / 3 - 1, frame.size.width, frame.size.height) animated:YES];
             
-            QBPopupMenu *popupMenu = [[QBPopupMenu alloc] initWithItems:@[item, item2]];
+           
+            [self becomeFirstResponder];
+            UIMenuItem *menuItem = [[UIMenuItem alloc] initWithTitle:@"Delete" action:@selector(deletePhoto)];
+            UIMenuItem *menuCopy = [[UIMenuItem alloc] initWithTitle:@"Copy" action:@selector(copyPhoto)];
+            UIMenuController *menuCont = [UIMenuController sharedMenuController];
+            [menuCont setTargetRect:CGRectMake(point.x, point.y, 0, 0) inView:self.view];
+            menuCont.menuItems = [NSArray arrayWithObjects:menuItem, menuCopy, nil];
+            [menuCont setMenuVisible:YES animated:YES];
             
-            CGRect frame = ((UICollectionViewCell *)[self.collectionView cellForItemAtIndexPath:indexPath]).frame;
             
-            [popupMenu showInView:self.view targetRect:CGRectMake(frame.origin.x, frame.origin.y + [UIScreen mainScreen].bounds.size.width / 3 - 1, frame.size.width, frame.size.height) animated:YES];
+//            UIMenuItem *item = [[UIMenuItem alloc] initWithTitle:@"salut" action:nil];
+//            UIMenuController *menu = [UIMenuController alloc];
+//            
+//            [menu setTargetRect:CGRectMake(point.x, point.y, 0, 0) inView:self.view];
+//            [menu setMenuItems:@[item]];
+//            [self.collectionView becomeFirstResponder];
+//            [menu setMenuVisible:YES animated:YES];
             
-           /*
-            UIMenuItem *item = [[UIMenuItem alloc] initWithTitle:@"salut" action:nil];
-            UIMenuController *menu = [UIMenuController alloc];
-            
-            [menu setTargetRect:CGRectMake(point.x, point.y, 0, 0) inView:self.view];
-            [menu setMenuItems:@[item]];
-            [self.collectionView becomeFirstResponder];
-            [menu setMenuVisible:YES animated:YES];
-            */
             NSLog(@"selection = %d", indexPath.row);
         }
     }
@@ -156,13 +169,13 @@
     [super viewDidLoad];
     UITapGestureRecognizer *tapCell = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(selectCellDelete:)];
     [self.view addGestureRecognizer:tapCell];
-    
-    self.collectionView.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height - 84);
-    
+
+    self.collectionView.frame       = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height - 84);
+
     [self initconfigBar];
-    [self initButtonNavigationBar];
+    self.title = @"GIF Creator";
     [self.collectionView registerClass:[ImageCell class] forCellWithReuseIdentifier:@"photo"];
-    self.view.backgroundColor = self.collectionView.backgroundColor = [UIColor colorWithRed:42.0 / 255.0 green:49.0 / 255.0 blue:55.0 / 255.0 alpha:1];
+    self.view.backgroundColor       = self.collectionView.backgroundColor = [UIColor colorWithRed:42.0 / 255.0 green:49.0 / 255.0 blue:55.0 / 255.0 alpha:1];
 }
 
 @end
