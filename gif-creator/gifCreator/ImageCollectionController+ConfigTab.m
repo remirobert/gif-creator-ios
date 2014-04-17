@@ -11,6 +11,31 @@
 
 @implementation ImageCollectionController (ConfigTab)
 
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 1)
+        [self resetGif];
+}
+
+- (void) alertReset {
+    self->alertView = [[FUIAlertView alloc] initWithTitle:@"Reset Gif"
+                                                          message:@"Do you want reset all the Gif ?"
+                                                         delegate:nil cancelButtonTitle:@"Dismiss"
+                                                otherButtonTitles:@"Ok", nil];
+    self->alertView.delegate = self;
+    self->alertView.titleLabel.textColor = [UIColor cloudsColor];
+    self->alertView.titleLabel.font = [UIFont boldFlatFontOfSize:16];
+    self->alertView.messageLabel.textColor = [UIColor cloudsColor];
+    self->alertView.messageLabel.font = [UIFont flatFontOfSize:14];
+    self->alertView.backgroundOverlay.backgroundColor = [[UIColor cloudsColor] colorWithAlphaComponent:0.8];
+    self->alertView.alertContainer.backgroundColor = [UIColor midnightBlueColor];
+    self->alertView.defaultButtonColor = [UIColor cloudsColor];
+    self->alertView.defaultButtonShadowColor = [UIColor asbestosColor];
+    self->alertView.defaultButtonFont = [UIFont boldFlatFontOfSize:16];
+    self->alertView.defaultButtonTitleColor = [UIColor asbestosColor];
+    [self->alertView show];
+}
+
 - (void) initconfigBar {
     UIView *configBar = [[UIView alloc] initWithFrame:CGRectMake(0, [UIScreen mainScreen].bounds.size.height - 64, [UIScreen mainScreen].bounds.size.width, 64)];
 
@@ -51,13 +76,12 @@
     copy.titleLabel.font      = [UIFont boldFlatFontOfSize:16];
     [copy setTitleColor:[UIColor cloudsColor] forState:UIControlStateNormal];
     [copy setTitleColor:[UIColor cloudsColor] forState:UIControlStateHighlighted];
-    [copy addTarget:self action:@selector(resetGif) forControlEvents:UIControlEventTouchUpInside];
+    [copy addTarget:self action:@selector(alertReset) forControlEvents:UIControlEventTouchUpInside];
 
 
     configBar.backgroundColor = [UIColor colorWithRed:82.0 / 255.0 green:200.0 / 255.0 blue:109.0 / 255.0 alpha:1];
 
     [configBar addSubview:copy];
-//    [configBar addSubview:addButton];
     [configBar addSubview:add];
     [configBar addSubview:delete];
     [self.view addSubview:configBar];

@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FlatUIKit.h"
 
-@interface ImageCollectionController : UICollectionViewController <UIPickerViewDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate>
+@interface ImageCollectionController : UICollectionViewController <UIPickerViewDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIAlertViewDelegate, FUIAlertViewDelegate>
 {
     int indexSelected;
+    FUIAlertView *alertView;
 }
 
 @property (nonatomic) NSMutableArray                  *photos;

@@ -98,6 +98,10 @@
 }
 
 - (void) makeGif {
+    AppDelegate *de = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+    [self.photos removeAllObjects];
+    de.photos = self.photos;
     ControllerGif *gif = [[ControllerGif alloc] init];
     [self.navigationController pushViewController:gif animated:YES];
 }
@@ -117,9 +121,7 @@
 
 - (BOOL)canPerformAction: (SEL)action withSender: (id)sender {
     NSLog(@"call here");
-    if (action == @selector(deletePhoto))
-        return (YES);
-    if (action == @selector(copyPhoto))
+    if (action == @selector(deletePhoto) || action == @selector(copyPhoto))
         return (YES);
     return (NO);
 }

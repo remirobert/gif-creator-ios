@@ -11,5 +11,6 @@
 @interface ImageCollectionController (ConfigTab)
 
 - (void) initconfigBar;
+- (void) alertReset;
 
 @end
