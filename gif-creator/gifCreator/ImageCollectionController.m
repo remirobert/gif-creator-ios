@@ -11,7 +11,6 @@
 #import "ControllerGif.h"
 #import "AppDelegate.h"
 #import "ImageCollectionController+ConfigTab.h"
-#import "QBPopupMenu.h"
 
 @interface ImageCollectionController ()
 

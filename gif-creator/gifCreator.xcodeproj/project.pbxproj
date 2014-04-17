@@ -41,12 +41,6 @@
 		A515DCED18F7E8F9005B9299 /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A515DCE318F7E8F9005B9299 /* Lato-Regular.ttf */; };
 		A56ECE4618F58A55008F1045 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A56ECE4518F58A55008F1045 /* Images.xcassets */; };
 		A56ECE4918F5A57A008F1045 /* ControllerGif.m in Sources */ = {isa = PBXBuildFile; fileRef = A56ECE4818F5A57A008F1045 /* ControllerGif.m */; };
-		A5C604D918FC67020047C44D /* QBPlasticPopupMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C604CE18FC67020047C44D /* QBPlasticPopupMenu.m */; };
-		A5C604DA18FC67020047C44D /* QBPopupMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C604D018FC67020047C44D /* QBPopupMenu.m */; };
-		A5C604DB18FC67020047C44D /* QBPopupMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C604D218FC67020047C44D /* QBPopupMenuItem.m */; };
-		A5C604DC18FC67020047C44D /* QBPopupMenuItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C604D418FC67020047C44D /* QBPopupMenuItemView.m */; };
-		A5C604DD18FC67020047C44D /* QBPopupMenuOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C604D618FC67020047C44D /* QBPopupMenuOverlayView.m */; };
-		A5C604DE18FC67020047C44D /* QBPopupMenuPagenatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C604D818FC67020047C44D /* QBPopupMenuPagenatorView.m */; };
 		A5DFB79618F57DA2007B068F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5DFB79518F57DA2007B068F /* Foundation.framework */; };
 		A5DFB79818F57DA2007B068F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5DFB79718F57DA2007B068F /* CoreGraphics.framework */; };
 		A5DFB79A18F57DA2007B068F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5DFB79918F57DA2007B068F /* UIKit.framework */; };
@@ -129,18 +123,6 @@
 		A56ECE4518F58A55008F1045 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		A56ECE4718F5A57A008F1045 /* ControllerGif.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ControllerGif.h; sourceTree = "<group>"; };
 		A56ECE4818F5A57A008F1045 /* ControllerGif.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ControllerGif.m; sourceTree = "<group>"; };
-		A5C604CD18FC67020047C44D /* QBPlasticPopupMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QBPlasticPopupMenu.h; sourceTree = "<group>"; };
-		A5C604CE18FC67020047C44D /* QBPlasticPopupMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QBPlasticPopupMenu.m; sourceTree = "<group>"; };
-		A5C604CF18FC67020047C44D /* QBPopupMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QBPopupMenu.h; sourceTree = "<group>"; };
-		A5C604D018FC67020047C44D /* QBPopupMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QBPopupMenu.m; sourceTree = "<group>"; };
-		A5C604D118FC67020047C44D /* QBPopupMenuItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QBPopupMenuItem.h; sourceTree = "<group>"; };
-		A5C604D218FC67020047C44D /* QBPopupMenuItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QBPopupMenuItem.m; sourceTree = "<group>"; };
-		A5C604D318FC67020047C44D /* QBPopupMenuItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QBPopupMenuItemView.h; sourceTree = "<group>"; };
-		A5C604D418FC67020047C44D /* QBPopupMenuItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QBPopupMenuItemView.m; sourceTree = "<group>"; };
-		A5C604D518FC67020047C44D /* QBPopupMenuOverlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QBPopupMenuOverlayView.h; sourceTree = "<group>"; };
-		A5C604D618FC67020047C44D /* QBPopupMenuOverlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QBPopupMenuOverlayView.m; sourceTree = "<group>"; };
-		A5C604D718FC67020047C44D /* QBPopupMenuPagenatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QBPopupMenuPagenatorView.h; sourceTree = "<group>"; };
-		A5C604D818FC67020047C44D /* QBPopupMenuPagenatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QBPopupMenuPagenatorView.m; sourceTree = "<group>"; };
 		A5DFB79218F57DA2007B068F /* gifCreator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = gifCreator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5DFB79518F57DA2007B068F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		A5DFB79718F57DA2007B068F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -256,25 +238,6 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		A5C604CC18FC67020047C44D /* QBPopupMenu */ = {
-			isa = PBXGroup;
-			children = (
-				A5C604CD18FC67020047C44D /* QBPlasticPopupMenu.h */,
-				A5C604CE18FC67020047C44D /* QBPlasticPopupMenu.m */,
-				A5C604CF18FC67020047C44D /* QBPopupMenu.h */,
-				A5C604D018FC67020047C44D /* QBPopupMenu.m */,
-				A5C604D118FC67020047C44D /* QBPopupMenuItem.h */,
-				A5C604D218FC67020047C44D /* QBPopupMenuItem.m */,
-				A5C604D318FC67020047C44D /* QBPopupMenuItemView.h */,
-				A5C604D418FC67020047C44D /* QBPopupMenuItemView.m */,
-				A5C604D518FC67020047C44D /* QBPopupMenuOverlayView.h */,
-				A5C604D618FC67020047C44D /* QBPopupMenuOverlayView.m */,
-				A5C604D718FC67020047C44D /* QBPopupMenuPagenatorView.h */,
-				A5C604D818FC67020047C44D /* QBPopupMenuPagenatorView.m */,
-			);
-			path = QBPopupMenu;
-			sourceTree = "<group>";
-		};
 		A5DFB78918F57DA2007B068F = {
 			isa = PBXGroup;
 			children = (
@@ -310,7 +273,6 @@
 		A5DFB79B18F57DA2007B068F /* gifCreator */ = {
 			isa = PBXGroup;
 			children = (
-				A5C604CC18FC67020047C44D /* QBPopupMenu */,
 				A515DC9B18F7E232005B9299 /* Classes */,
 				A5DFB7A418F57DA2007B068F /* AppDelegate.h */,
 				A5DFB7A518F57DA2007B068F /* AppDelegate.m */,
@@ -462,9 +424,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A5C604DA18FC67020047C44D /* QBPopupMenu.m in Sources */,
 				A515DCC618F7E232005B9299 /* FUICellBackgroundView.m in Sources */,
-				A5C604DC18FC67020047C44D /* QBPopupMenuItemView.m in Sources */,
 				A515DCC418F7E232005B9299 /* FUIAlertView.m in Sources */,
 				A5DFB7C618F57DCD007B068F /* ImageCollectionController.m in Sources */,
 				A515DCCB18F7E232005B9299 /* UIBarButtonItem+FlatUI.m in Sources */,
@@ -478,12 +438,9 @@
 				A515DCD218F7E232005B9299 /* UISlider+FlatUI.m in Sources */,
 				A5DFB7A618F57DA2007B068F /* AppDelegate.m in Sources */,
 				A515DCD518F7E232005B9299 /* UITableViewCell+FlatUI.m in Sources */,
-				A5C604DD18FC67020047C44D /* QBPopupMenuOverlayView.m in Sources */,
 				A515DCD418F7E232005B9299 /* UITabBar+FlatUI.m in Sources */,
 				A515DCCE18F7E232005B9299 /* UIImage+FlatUI.m in Sources */,
 				A515DCD118F7E232005B9299 /* UIProgressView+FlatUI.m in Sources */,
-				A5C604D918FC67020047C44D /* QBPlasticPopupMenu.m in Sources */,
-				A5C604DB18FC67020047C44D /* QBPopupMenuItem.m in Sources */,
 				A515DCD318F7E232005B9299 /* UIStepper+FlatUI.m in Sources */,
 				A515DCC918F7E232005B9299 /* FUISwitch.m in Sources */,
 				A515DCD018F7E232005B9299 /* UIPopoverController+FlatUI.m in Sources */,
@@ -492,7 +449,6 @@
 				A515DCC518F7E232005B9299 /* FUIButton.m in Sources */,
 				A5DFB7A218F57DA2007B068F /* main.m in Sources */,
 				A515DCCD18F7E232005B9299 /* UIFont+FlatUI.m in Sources */,
-				A5C604DE18FC67020047C44D /* QBPopupMenuPagenatorView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

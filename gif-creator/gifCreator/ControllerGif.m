@@ -44,18 +44,32 @@
 }
 
 - (void) initButtoon {
-    FUIButton *saveCamera      = [[FUIButton alloc] initWithFrame:CGRectMake([UIScreen mainScreen].bounds.size.width / 4, [UIScreen mainScreen].bounds.size.height - ([UIScreen mainScreen].bounds.size.height / 3), [UIScreen mainScreen].bounds.size.width / 2, (([UIScreen mainScreen].bounds.size.height / 2) - 114) / 2)];
-
+    FUIButton *saveCamera      = [[FUIButton alloc] initWithFrame:CGRectMake(10, [UIScreen mainScreen].bounds.size.height - 60, [UIScreen mainScreen].bounds.size.width / 2 - 15, 50)];
     saveCamera.buttonColor     = [UIColor orangeColor];
     saveCamera.shadowColor     = [UIColor redColor];
     saveCamera.shadowHeight    = 3.0f;
     saveCamera.cornerRadius    = 6.0f;
 
-    [saveCamera setTitle:@"save photo" forState:UIControlStateNormal];
+    [saveCamera setTitle:@"Save photo" forState:UIControlStateNormal];
     saveCamera.titleLabel.font = [UIFont boldFlatFontOfSize:16];
     [saveCamera setTitleColor:[UIColor cloudsColor] forState:UIControlStateNormal];
     [saveCamera setTitleColor:[UIColor cloudsColor] forState:UIControlStateHighlighted];
     [self.view addSubview:saveCamera];
+    
+    FUIButton *editGif      = [[FUIButton alloc] initWithFrame:CGRectMake(25 + ([UIScreen mainScreen].bounds.size.width / 2 - 20), [UIScreen mainScreen].bounds.size.height - 60, [UIScreen mainScreen].bounds.size.width / 2 - 15, 50)];
+    editGif.buttonColor     = [UIColor orangeColor];
+    editGif.shadowColor     = [UIColor redColor];
+    editGif.shadowHeight    = 3.0f;
+    editGif.cornerRadius    = 6.0f;
+    
+    [editGif setTitle:@"Edit photo" forState:UIControlStateNormal];
+    editGif.titleLabel.font = [UIFont boldFlatFontOfSize:16];
+    [editGif setTitleColor:[UIColor cloudsColor] forState:UIControlStateNormal];
+    [editGif setTitleColor:[UIColor cloudsColor] forState:UIControlStateHighlighted];
+    
+    [self.view addSubview:saveCamera];
+    [self.view addSubview:editGif];
+    
 //    [saveCamera addTarget:self action:@selector(deletePhoto) forControlEvents:UIControlEventTouchUpInside];
 }
 
