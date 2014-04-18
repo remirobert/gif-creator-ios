@@ -20,20 +20,20 @@
 
 - (void) initLabel {
     UIFont *myFont          = [UIFont boldFlatFontOfSize:16];
-    UILabel *speedTile      = [[UILabel alloc] initWithFrame:CGRectMake(0, ([UIScreen mainScreen].bounds.size.height) / 2 - 5 + 64, [UIScreen mainScreen].bounds.size.width, 40)];
+    UILabel *speedTile      = [[UILabel alloc] initWithFrame:CGRectMake(0, ([UIScreen mainScreen].bounds.size.height) / 2 - 5, [UIScreen mainScreen].bounds.size.width, 40)];
     [speedTile setFont:myFont];
     speedTile.text          = @"speed frames";
     speedTile.textAlignment = NSTextAlignmentCenter;
     speedTile.textColor     = [UIColor whiteColor];
 
-    UILabel *more           = [[UILabel alloc] initWithFrame:CGRectMake([UIScreen mainScreen].bounds.size.width - 15, [UIScreen mainScreen].bounds.size.height / 2 + 15 + 64, 10, 40)];
+    UILabel *more           = [[UILabel alloc] initWithFrame:CGRectMake([UIScreen mainScreen].bounds.size.width - 15, [UIScreen mainScreen].bounds.size.height / 2 + 15, 10, 40)];
     [more setFont:myFont];
     more.text               = @"+";
     more.textAlignment      = NSTextAlignmentCenter;
     more.textColor          = [UIColor whiteColor];
 
 
-    UILabel *less           = [[UILabel alloc] initWithFrame:CGRectMake(10, [UIScreen mainScreen].bounds.size.height / 2 + 15 + 65, 10, 40)];
+    UILabel *less           = [[UILabel alloc] initWithFrame:CGRectMake(10, [UIScreen mainScreen].bounds.size.height / 2 + 15, 10, 40)];
     [less setFont:myFont];
     less.text               = @"-";
     less.textAlignment      = NSTextAlignmentCenter;
@@ -45,26 +45,14 @@
 }
 
 - (void) editGif {
-    NSLog(@"call");
-    
-    ImageCollectionController *collectionControler = [[ImageCollectionController alloc] init];
-    
-    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:collectionControler];
-    
-    [navController.navigationController.navigationBar setTitleTextAttributes:
-     [NSDictionary dictionaryWithObjectsAndKeys:
-      [UIFont fontWithName:@"Lato-Black" size:21],
-      NSFontAttributeName, nil]];
-    
-    
-    navController.navigationBar.barStyle = UIBarStyleBlack;
-    navController.navigationBar.barTintColor = [UIColor colorWithRed:82.0 / 255.0 green:200.0 / 255.0 blue:109.0 / 255.0 alpha:1];
-    
-    [self presentViewController:navController animated:YES completion:nil];
+    [self.navigationController popViewControllerAnimated:YES];
+//    [self.navigationController pushViewController:navController animated:YES];
+//    [self.navigationController presentViewController:navController animated:YES completion:nil];
+//    [self presentViewController:navController animated:YES completion:nil];
 }
 
 - (void) initButtoon {
-    FUIButton *saveCamera      = [[FUIButton alloc] initWithFrame:CGRectMake(10, [UIScreen mainScreen].bounds.size.height - 60, [UIScreen mainScreen].bounds.size.width / 2 - 15, 50)];
+    FUIButton *saveCamera      = [[FUIButton alloc] initWithFrame:CGRectMake(10, [UIScreen mainScreen].bounds.size.height - 124, [UIScreen mainScreen].bounds.size.width / 2 - 15, 50)];
     saveCamera.buttonColor     = [UIColor orangeColor];
     saveCamera.shadowColor     = [UIColor redColor];
     saveCamera.shadowHeight    = 3.0f;
@@ -76,7 +64,7 @@
     [saveCamera setTitleColor:[UIColor cloudsColor] forState:UIControlStateHighlighted];
     [self.view addSubview:saveCamera];
     
-    FUIButton *editGif      = [[FUIButton alloc] initWithFrame:CGRectMake(25 + ([UIScreen mainScreen].bounds.size.width / 2 - 20), [UIScreen mainScreen].bounds.size.height - 60, [UIScreen mainScreen].bounds.size.width / 2 - 15, 50)];
+    FUIButton *editGif      = [[FUIButton alloc] initWithFrame:CGRectMake(25 + ([UIScreen mainScreen].bounds.size.width / 2 - 20), [UIScreen mainScreen].bounds.size.height - 124, [UIScreen mainScreen].bounds.size.width / 2 - 15, 50)];
     editGif.buttonColor     = [UIColor orangeColor];
     editGif.shadowColor     = [UIColor redColor];
     editGif.shadowHeight    = 3.0f;
@@ -121,12 +109,12 @@
     self = [ControllerGif alloc];
     self.title = @"GIF Creator";
     self->speedInterval = 0.5;
-    self.speed = [[UISlider alloc] initWithFrame:CGRectMake(20, [UIScreen mainScreen].bounds.size.height / 2 + 10 + 64, [UIScreen mainScreen].bounds.size.width - 40, 50)];
+    self.speed = [[UISlider alloc] initWithFrame:CGRectMake(20, [UIScreen mainScreen].bounds.size.height / 2 + 10, [UIScreen mainScreen].bounds.size.width - 40, 50)];
     self.speed.minimumValue = 0.1;
     self.speed.maximumValue = 1.0;
     self.speed.value = 0.5;
     [self.speed addTarget:self action:@selector(changeSpeed) forControlEvents:UIControlEventValueChanged];
-    self.imageGif = [[UIImageView alloc] initWithFrame:CGRectMake(0, 64, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height / 2)];
+    self.imageGif = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height / 2)];
     self.imageGif.backgroundColor = [UIColor blackColor];
     self.view.backgroundColor = [UIColor colorWithRed:42.0 / 255.0 green:49.0 / 255.0 blue:55.0 / 255.0 alpha:1];
     [self.view addSubview:self.speed];
@@ -142,7 +130,7 @@
 - (void) displayGif {
     AppDelegate *de = (AppDelegate *)[[UIApplication sharedApplication] delegate];
 
-    self->numberPhotos = [de.photos count];
+    self->numberPhotos = (int)[de.photos count];
     self.imageGif.animationImages = [NSArray arrayWithArray:de.photos];
     self.imageGif.animationDuration = self->speedInterval;
     self.imageGif.contentMode = UIViewContentModeScaleAspectFit;
@@ -157,19 +145,13 @@
     ImageCollectionController *photoController = [[ImageCollectionController alloc] init];
     NSLog(@"%lu", (unsigned long)[photoController.photos count]);
     [self displayGif];
-}
-
-- (void) initViewTitle {
-    UIView *titleView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 64)];
     
-    titleView.backgroundColor = [UIColor colorWithRed:82.0 / 255.0 green:200.0 / 255.0 blue:109.0 / 255.0 alpha:1];
-    [self.view addSubview:titleView];
+     self.navigationItem.hidesBackButton = YES;
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self initViewTitle];
     [self initButtoon];
     [self progressView];
     [self initLabel];

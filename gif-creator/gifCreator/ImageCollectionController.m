@@ -101,8 +101,8 @@
     
     de.photos = self.photos;
     ControllerGif *gif = [[ControllerGif alloc] init];
-    [self presentViewController:gif animated:YES completion:nil];
-//    [self.navigationController pushViewController:gif animated:YES];
+    //[self presentViewController:gif animated:YES completion:nil];
+    [self.navigationController pushViewController:gif animated:YES];
 }
 
 - (void) resetGif {
