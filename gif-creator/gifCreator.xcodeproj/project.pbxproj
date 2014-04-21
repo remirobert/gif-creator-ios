@@ -41,6 +41,8 @@
 		A515DCED18F7E8F9005B9299 /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A515DCE318F7E8F9005B9299 /* Lato-Regular.ttf */; };
 		A56ECE4618F58A55008F1045 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A56ECE4518F58A55008F1045 /* Images.xcassets */; };
 		A56ECE4918F5A57A008F1045 /* ControllerGif.m in Sources */ = {isa = PBXBuildFile; fileRef = A56ECE4818F5A57A008F1045 /* ControllerGif.m */; };
+		A5D898301905828A001BCBEA /* CreateGif.m in Sources */ = {isa = PBXBuildFile; fileRef = A5D8982F1905828A001BCBEA /* CreateGif.m */; };
+		A5D898361905932B001BCBEA /* UIImage+animatedGIF.m in Sources */ = {isa = PBXBuildFile; fileRef = A5D898341905932B001BCBEA /* UIImage+animatedGIF.m */; };
 		A5DFB79618F57DA2007B068F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5DFB79518F57DA2007B068F /* Foundation.framework */; };
 		A5DFB79818F57DA2007B068F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5DFB79718F57DA2007B068F /* CoreGraphics.framework */; };
 		A5DFB79A18F57DA2007B068F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5DFB79918F57DA2007B068F /* UIKit.framework */; };
@@ -123,6 +125,10 @@
 		A56ECE4518F58A55008F1045 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		A56ECE4718F5A57A008F1045 /* ControllerGif.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ControllerGif.h; sourceTree = "<group>"; };
 		A56ECE4818F5A57A008F1045 /* ControllerGif.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ControllerGif.m; sourceTree = "<group>"; };
+		A5D8982E1905828A001BCBEA /* CreateGif.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateGif.h; sourceTree = "<group>"; };
+		A5D8982F1905828A001BCBEA /* CreateGif.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateGif.m; sourceTree = "<group>"; };
+		A5D898341905932B001BCBEA /* UIImage+animatedGIF.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+animatedGIF.m"; sourceTree = "<group>"; };
+		A5D898351905932B001BCBEA /* UIImage+animatedGIF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+animatedGIF.h"; sourceTree = "<group>"; };
 		A5DFB79218F57DA2007B068F /* gifCreator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = gifCreator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5DFB79518F57DA2007B068F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		A5DFB79718F57DA2007B068F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -170,6 +176,8 @@
 		A515DC9B18F7E232005B9299 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				A5D898341905932B001BCBEA /* UIImage+animatedGIF.m */,
+				A5D898351905932B001BCBEA /* UIImage+animatedGIF.h */,
 				A515DC9C18F7E232005B9299 /* ios */,
 			);
 			path = Classes;
@@ -284,6 +292,8 @@
 				A50911EA18F6903500599C64 /* ImageCollectionController+ConfigTab.m */,
 				A56ECE4718F5A57A008F1045 /* ControllerGif.h */,
 				A56ECE4818F5A57A008F1045 /* ControllerGif.m */,
+				A5D8982E1905828A001BCBEA /* CreateGif.h */,
+				A5D8982F1905828A001BCBEA /* CreateGif.m */,
 				A56ECE4518F58A55008F1045 /* Images.xcassets */,
 				A5DFB79C18F57DA2007B068F /* Supporting Files */,
 			);
@@ -449,8 +459,10 @@
 				A515DCD018F7E232005B9299 /* UIPopoverController+FlatUI.m in Sources */,
 				A515DCC718F7E232005B9299 /* FUIPopoverBackgroundView.m in Sources */,
 				A515DCCF18F7E232005B9299 /* UINavigationBar+FlatUI.m in Sources */,
+				A5D898361905932B001BCBEA /* UIImage+animatedGIF.m in Sources */,
 				A515DCC518F7E232005B9299 /* FUIButton.m in Sources */,
 				A5DFB7A218F57DA2007B068F /* main.m in Sources */,
+				A5D898301905828A001BCBEA /* CreateGif.m in Sources */,
 				A515DCCD18F7E232005B9299 /* UIFont+FlatUI.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

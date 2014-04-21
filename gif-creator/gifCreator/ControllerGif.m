@@ -11,6 +11,7 @@
 #import "AppDelegate.h"
 #import "FlatUIKit.h"
 #import "ImageCollectionController.h"
+#import "CreateGif.h"
 
 @interface ControllerGif ()
 
@@ -72,12 +73,17 @@
     [editGif setTitleColor:[UIColor cloudsColor] forState:UIControlStateNormal];
     [editGif setTitleColor:[UIColor cloudsColor] forState:UIControlStateHighlighted];
     
+    [saveCamera addTarget:self action:@selector(saveGif) forControlEvents:UIControlEventTouchUpInside];
     [editGif addTarget:self action:@selector(editGif) forControlEvents:UIControlEventTouchUpInside];
     
     [self.view addSubview:saveCamera];
     [self.view addSubview:editGif];
+}
+
+- (void) saveGif {
+    AppDelegate *de = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
-//    [saveCamera addTarget:self action:@selector(deletePhoto) forControlEvents:UIControlEventTouchUpInside];
+    [CreateGif makeAnimatedGif:de.photos :self];
 }
 
 - (void) progressView {
