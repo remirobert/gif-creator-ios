@@ -46,9 +46,6 @@
 
 - (void) editGif {
     [self.navigationController popViewControllerAnimated:YES];
-//    [self.navigationController pushViewController:navController animated:YES];
-//    [self.navigationController presentViewController:navController animated:YES completion:nil];
-//    [self presentViewController:navController animated:YES completion:nil];
 }
 
 - (void) initButtoon {
@@ -145,8 +142,10 @@
     ImageCollectionController *photoController = [[ImageCollectionController alloc] init];
     NSLog(@"%lu", (unsigned long)[photoController.photos count]);
     [self displayGif];
-    
-     self.navigationItem.hidesBackButton = YES;
+}
+
+- (void) viewWillAppear:(BOOL)animated {
+    self.navigationItem.hidesBackButton = YES;
 }
 
 - (void)viewDidLoad
