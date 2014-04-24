@@ -46,6 +46,7 @@
     
     NSLog(@"url=%@", fileURL);
     
+    return ;
     NSData *data = [NSData dataWithContentsOfURL:fileURL];
     NSLog(@"data length = %d", [data length]);
     UIImage *im = [UIImage imageWithData:data];
